@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome to Vue</title>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<h1>my todos</h1>
+
+		<input v-model="newTodo" @keyup.enter="addTodo">
+
+		<button @click="removeAll">Remove all</button>
+
+		<ul>
+			<todo-item
+				v-for="todo in todos"
+				v-bind:todo="todo">
+
+				{{ todo.title }}
+
+			</todo-item>
+
+		</ul>
+	</div>
+
+	<script>
+		const STORAGE_KEY='todos-vuejs-2.0'
+
+		// local storage persistence
+		var todoStorage =  {
+			save: function(todos) {
+				console.log(JSON.stringify(todos));
+				localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+			},
+
+			fetch: function() {
+				var todos = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+				return todos;
+			},
+		}
+
+		// visibility filters
+		var filters = {
+			all: function(todos) {
+				return todos;
+			},
+
+			active: function(todos) {
+				return todos;
+			},
+
+			completed: function(todos) {
+				return todos;
+			},
+		}
+
+		Vue.component('todo-item', {
+			props: ['todo'],
+			template: '<li>{{ todo.title }}</li>',
+		});
+
+		new Vue({
+			el: '#app',
+			data: {
+				todos: todoStorage.fetch(),
+				newTodo: null,
+			},
+
+			// watch todos change for persistence
+			watch: {
+				todos: function(todos) {
+					todoStorage.save(todos);
+				},
+			},
+
+			// methods that implement the logic.
+			// notice there's no DOM manipulation here at all.
+			methods: {
+
+				// editTodo
+				// removeTodo
+
+				removeAll: function() {
+					this.todos.splice(0, this.todos.length);
+				},
+
+				addTodo: function () {
+					var value = this.newTodo && this.newTodo.trim();
+					if(!value) return;
+
+					this.todos.push({
+						title: value,
+						completed: false,
+					});
+
+					this.newTodo = '';
+				},
+			},
+		})
+	</script>
+</body>
+</html>
