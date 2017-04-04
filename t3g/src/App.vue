@@ -11,6 +11,10 @@ export default {
 	components: {
 		gameBoard: Board,
 	},
+	mounted: function() {
+		console.log('Mount game');
+		this.$store.dispatch('newGame');
+	}
 }
 </script>
 

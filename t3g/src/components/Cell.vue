@@ -18,8 +18,9 @@
 		methods: {
 			handleClick() {
 				console.log('board-cell', this.position.x, this.position.y);
-			},
-		},
+				this.setClassName('active');
+			}
+		}
 	};
 </script>
 
@@ -27,14 +28,20 @@
 	.board-cell {
 		background: #fff;
 		border: 1px solid #999;
-		float: left;
-		font-size: 24px;
 		font-weight: bold;
-		padding: 13px;
-		text-align: center;
+		text-align: center !important;
+		padding: 16px;
+		margin: -1px;
+		line-height: 13px;
+		width: 19.999%;
+		height: 19.999%;
 	}
 
 	.board-cell:focus {
 		outline: none;
+	}
+
+	board-cell.active {
+		color: #333;
 	}
 </style>
