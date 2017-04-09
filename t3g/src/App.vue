@@ -1,15 +1,18 @@
 <template>
 	<div id="app">
+		<count-down />
 		<game-board />
 	</div>
 </template>
 
 <script>
 import Board from './components/Board.vue';
+import Timer from './components/Timer.vue';
 
 export default {
 	components: {
 		gameBoard: Board,
+		countDown: Timer,
 	},
 	mounted: function() {
 		console.log('Mount game');
