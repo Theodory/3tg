@@ -8,8 +8,8 @@ const store = new Vuex.Store({
 	state: {
 		board: [],
 		size: 5,
+		currentTime: 0,
 		startTime: null,
-		currentTime: null,
 		endTime: null
 	},
 	actions: {
@@ -25,8 +25,7 @@ const store = new Vuex.Store({
 			let cells = [];
 			const length = 25;
 
-			state.startTime = (new Date()).getTime();
-			state.currentTime = state.startTime;
+			state.startTime = Math.trunc((new Date()).getTime() / 1000);
 
 			let start = Math.floor((Math.random() * 10) * (Math.pow(10, 1)));
 
@@ -35,7 +34,7 @@ const store = new Vuex.Store({
 			_.forEach(cells,(item) => state.board.push(item));
 		},
 		COUNT_DOWN(state) {
-			state.currentTime = (new Date()).getTime();
+			state.currentTime = Math.trunc((new Date()).getTime() / 1000) - state.startTime;
 		}
 	},
 	getters: {
