@@ -1,0 +1,1 @@
+export const SWITCH_PLAYER = 'SWITCH_PLAYER';

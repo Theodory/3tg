@@ -1,5 +1,7 @@
+import * as types from './mutation-types';
+
 export default {
-	SET_NEXT_PLAYER(state) {
+	[types.SWITCH_PLAYER](state) {
 		state.xIsNext = !state.xIsNext;
 	},
 };

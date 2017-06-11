@@ -1,7 +1,7 @@
 <template>
 	<button
 		class="board-cell"
-		@click="nextPlayer">
+		@click="handleClick">
 			{{ value }}
 	</button>
 </template>
@@ -16,9 +16,11 @@ export default {
 	},
 
 	methods: {
-		...mapActions({
-			nextPlayer: 'setNextPlayer',
-		}),
+		...mapActions([ 'switchPlayer', ]),
+
+		handleClick() {
+			this.switchPlayer();
+		},
 	},
 };
 </script>

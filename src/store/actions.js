@@ -1,5 +1,7 @@
+import * as types from './mutation-types';
+
 export default {
-	setNextPlayer({ commit }) {
-		commit('SET_NEXT_PLAYER');
+	switchPlayer({ commit }) {
+		commit(types.SWITCH_PLAYER);
 	},
 };
