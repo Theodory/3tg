@@ -7,19 +7,30 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
 	props: {
-		position: { x: '', y: '' },
+		pos: Object,
 		value: null,
 	},
 
+	computed: {
+		...mapGetters({
+			cells: 'getCells',
+			currentPlayer: 'getCurrentPlayer',
+		}),
+	},
+
 	methods: {
-		...mapActions([ 'switchPlayer', ]),
+		...mapActions([ 'switchPlayer', 'setCells', ]),
 
 		handleClick() {
-			this.switchPlayer();
+			const cells = this.cells.slice();
+			console.log(this.currentPlayer);
+
+			cells[this.pos.x][this.pos.y] = this.currentPlayer;
+			this.setCells(cells);
 		},
 	},
 };

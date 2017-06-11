@@ -1,12 +1,12 @@
 <template>
 	<div>
-		<div class="board-row" v-for="(row, indexY) in cells">
+		<div class="board-row" v-for="(row, indexX) in cells">
 
 			<board-cell
-				v-for="(cell, indexX) in row"
+				v-for="(cell, indexY) in row"
 				:key="cell"
 				:value="cell"
-				:position="{ x: indexX, y: indexY }" />
+				:pos="{ x: indexX, y: indexY }" />
 
 		</div>
 	</div>

@@ -10,14 +10,7 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
 	state: {
 		xIsNext: true,
-
-		cells: [
-			['#', '#', '#', '#', '#'],
-			['#', '#', '#', '#', '#'],
-			['#', '#', '#', '#', '#'],
-			['#', '#', '#', '#', '#'],
-			['#', '#', '#', '#', '#'],
-		],
+		cells: Array(5).fill().map(arr => Array(5).fill('#')),
 	},
 
 	actions,
