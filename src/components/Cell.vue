@@ -23,12 +23,10 @@ export default {
 	},
 
 	methods: {
-		...mapActions([ 'switchPlayer', 'setCells', ]),
+		...mapActions(['switchPlayer', 'setCells',]),
 
 		handleClick() {
 			const cells = this.cells.slice();
-			console.log(this.currentPlayer);
-
 			cells[this.pos.x][this.pos.y] = this.currentPlayer;
 			this.setCells(cells);
 		},

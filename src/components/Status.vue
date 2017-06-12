@@ -1,5 +1,5 @@
 <template>
-	<h4>Player: {{ nextPlayer }}</h4>
+	<h4>Player: {{ currentPlayer }}</h4>
 </template>
 
 <script>
@@ -10,7 +10,7 @@ export default {
 
 	computed: {
 		...mapGetters({
-			nextPlayer: 'getNextPlayer',
+			currentPlayer: 'getCurrentPlayer',
 		}),
 	},
 };
