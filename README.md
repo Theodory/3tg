@@ -2,6 +2,11 @@
 
 > A Vue.js tic-tac-toe game 
 
+## Pending
+
+- Calculate winner
+- Play against AI
+
 ## Build Setup
 
 ``` bash
